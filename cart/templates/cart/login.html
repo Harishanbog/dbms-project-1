@@ -1,0 +1,42 @@
+{% extends "cart/base.html"%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div align="center" class="margin">
+        <h1>EYE WEAR </h1>
+        <div class="bg-white border" style="margin: 10%;">
+        <h1 class="">Sign-In</h1>
+        
+    <form action="" method="POST" class="container pt-5">
+        {% csrf_token %}
+        <table class="m-4"> 
+            <tr>
+                <th><input type="text" name="username" placeholder="email" required><br><br></th>
+
+            </tr>
+        <tr>
+            <th><input type="password" name="password" placeholder="password" required><br><br></th>
+        </tr>
+        <tr>
+            <th><button type="submit" class="btn btn-warning" name="submit">Submit</button></th>
+        </tr>
+    </table>
+    </form>
+    <p class="m-5">Don't have an account? <a href="/signup"> Sign Up</a></p>
+</div>
+    </div>
+    {% for message in messages %}
+     {{ message }}
+     {% endfor %}
+     
+</body>
+</html>
+{% include "cart/footer.html"%}
+{% endblock content %}

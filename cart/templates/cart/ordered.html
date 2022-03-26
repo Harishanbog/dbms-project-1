@@ -1,0 +1,74 @@
+{% extends "cart/base.html"%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'cart/styles.css' %}" type="text/css">
+    <title>Orders</title>
+</head>
+
+<div class="container mx-30 mt-10"> 
+     
+    <h1 class="m-4">Orders</h1>
+<div>
+    
+     
+  
+
+<div class="card-group">
+    {% for order_item in object_list %}
+    {% if order_item.ordered%}
+    <div class="col-lg-12 col-sm-12 px-5 py-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-text">
+                    <div>
+                        <div style="float: right;" class="mb-3">
+                            {% if order_item.delivered%}
+                        <p class="text-success">Order delivered</p>
+                        {% else %}
+                        <p class="text-danger"><b>Your order is on the way</b></p>
+                        {% endif %}
+                        <br>
+                        </div>
+                        <h4><b>Delivery Address</b></h4>
+                        <p><b>Billing Name: </b>{{order_item.billingaddress.billingname}}</p>
+                        <p><b>Address: </b>{{order_item.billingaddress.address_1}} , {{order_item.billingaddress.address_2}}</p>
+                        <p><b>District: </b>{{order_item.billingaddress.district}} - {{order_item.billingaddress.zip_code}} </p>
+
+                    </div>
+                     <h3>Order details</h3> 
+                    {% for ordered_item in order_item.items.all %}
+                        <div class="list-group list-group-horizontal">
+                            <h6 class="px-2"><b>{{forloop.counter}}</b></h6> 
+                            <p class="px-2 text-success">
+                                <b>{{ordered_item.item.title}} Qty ({{ordered_item.quantity}}) {{ordered_item.quantity}}*{{ordered_item.item.price}}</b> <b style="color: red;">={{ordered_item.get_total_item_price}}</b>
+                            </p>
+                             
+                        </div>
+                    {%endfor%}
+                    <p style="float:right" class="font-weight-bold text-info">
+                       <b>TOTAL: {{order_item.get_total}}</b>
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {%endif%}
+{% endfor %}
+<div>
+    <a class="btn btn-primary float-right m-5" href="/">Continue Shopping</a> 
+</div>
+</div>
+</div>
+</div>
+</html>
+{% include "cart/footer.html"%}
+{% endblock content %}

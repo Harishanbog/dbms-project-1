@@ -1,0 +1,59 @@
+ {% extends "cart/base.html"%}
+ {% block content %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Signup</title>
+ </head>
+ <body>
+     <div align="center" class="margin" >
+          <h1>Create New Account</h1>
+          <div class="bg-white border" style="margin: 10%;"> 
+               {% if otp %}
+               <h2>Enter the otp sent to your name</h2>
+               <form action="" method="POST">
+                    {% csrf_token %}
+                    OTP:<input type="text" name="otp">
+                    <input type="hidden" name="user" value="{{user.username}}">
+                    <button type="submit" class="btn btn-warning" name="submit">Submit</button>
+               </form>
+               {% else %}
+
+          <form action="" method="POST">
+              {% csrf_token %}
+              <table class="m-4">
+             <tr>
+                  <th><input type="text" name="first_name" class="" placeholder="First Name" required><br><br></th>
+             </tr>
+             <tr>
+                  <th><input type="text" name="last_name" placeholder="Last Name" required><br><br></th>
+             </tr>
+             <tr>
+               <th><input type="email" name="email" placeholder="Email" required><br><br></th>
+             </tr>
+             <tr>
+                  <th><input type="password" name="password1" placeholder="password" required><br><br></th>
+             </tr>
+             <tr>
+                  <th><input type="password" name="password2" placeholder="confirm password" required><br><br></th>
+             </tr>
+             
+             <tr>
+                  <th><button type="submit" class="btn btn-warning" name="submit">Submit</button><br><br></th>
+             </tr>
+          </table>
+          </form>
+          <p>Already have an account?<a href="/login">Signin</a></p>
+          {% endif %}
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+     </div>
+      </div>
+ </body>
+ </html>
+ {% include "cart/footer.html"%}
+ {% endblock content%}

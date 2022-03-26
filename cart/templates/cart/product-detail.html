@@ -1,0 +1,40 @@
+{% extends "cart/base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cart/styles.css' %}" type="text/css">
+    <title>Product</title>
+</head>
+<body>
+    <div class="container my-5" style="border: .2cm solid #0f0f0f ; padding-bottom: 1cm; color: black;">
+        <h3 class="text" style="padding:.4cm; text-align: center; font-size: 1cm;">{{object.title}}</h3>
+<div>
+    <div style="width: 50%; float: left;">
+        <img src="{{object.image.url}}" alt="image" weight="100" height="280">
+    </div>
+    <div style="width: 50%; float: right; font-size: 180%;">
+        <p class="text" style="color: rgb(238, 62, 106);"> <b>{{object.category}}</b></p>
+        <p class="text" style="color: rgb(20, 4, 109);">Frame: <b>{{object.frame_type}}</b></p>
+        <p class="text" style="color: rgb(212, 248, 7);">Style: <b>{{object.style}}</b></p>
+        <p class="text" style="color: rgb(230, 137, 31);">Color: <b>{{object.color}}</b></p>
+        <br>
+    </div>
+</div>
+        <p class="text" style="color: black;"> <b>{{object.description}}</b></p>
+        <p class="text" style="color: black;"> <b>Frame: {{object.frame_type}}</b></p>
+        <h5 class="card-text"><b>&#x20B9;{{object.dis_price}}</b><del style="color: rgb(58, 57, 57); padding-left: .5cm;">{{object.discountedprice}}</del></h5>
+        <a href="{{object.get_add_to_cart}}" class="btn btn-primary">Add to cart</a>
+        <a href="{{object.get_remove_from_cart}}" class="btn btn-danger">Remove from cart</a>
+
+    </div>
+    
+
+</body>
+</html>
+{% include "cart/footer.html"%}
+{% endblock content%}

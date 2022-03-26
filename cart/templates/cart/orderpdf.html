@@ -1,0 +1,36 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>PDF</title>
+ </head>
+ <body>
+    {% if order.ordered%}
+    <th style="text-align: right;">Order on:-{{order.ordered_date}}</th>
+    <h1 style="text-align: center;">Order Id:{{totalorder.id}}</h1>
+         
+       <tr> <th>USER:-{{order.user.username}}</th></tr> <br>
+        <tr><th>BILLING NAME:-{{order.billingaddress.billingname}}</th></tr><br>
+       <tr> <th>Contact Number:-{{order.billingaddress.phonenumber}}</th></tr><br>
+        <tr><th>District:-{{order.billingaddress.district}}</th></tr><br>
+      <tr>  <th>City:-{{order.billingaddress.city}}</th></tr><br>
+        <tr><th>Pincode{{order.billingaddress.zip_code}}</th></tr><br>
+        <tr><th>{{order.billingaddress.address_1}}</th></tr><br>
+        <tr><th>{{order.billingaddress.address_2}}</th></tr><br>
+         <h2>ORDER DETAILS</h2>
+         {% for order_item in order.items.all%}
+         <tr>{{forloop.counter}} {{order_item.item.title}} Qty({{order_item.quantity}}) {{order_item.get_total_item_price}}</tr><br>
+         {% endfor %}
+        </th>
+        <br>
+        <b><th>TOTAL{{order.get_total}}</th></b><br>
+        
+        
+        
+         
+        {%endif%}
+     
+ </body>
+ </html>
