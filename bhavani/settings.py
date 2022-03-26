@@ -135,7 +135,7 @@ EMAIL_HOST_USER='raohari12@gmail.com'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_PASSWORD='Ramprasad34'
+EMAIL_HOST_PASSWORD='##'
 
 
 #razorpay
