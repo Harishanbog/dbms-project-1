@@ -139,6 +139,6 @@ EMAIL_HOST_PASSWORD='##'
 
 
 #razorpay
-razorpay_id="rzp_test_3O7nGVRIHoBpLv"
-razorpay_account_id="BIpGvbbURpEo9ANJ7XZNcfms"
+razorpay_id="id"
+razorpay_account_id="id"
  
